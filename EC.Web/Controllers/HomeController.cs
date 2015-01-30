@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EC.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,13 @@ namespace EC.Web.Controllers
 {
     public class HomeController : Controller
     {
+        ICategoryManager objICategoryManager = new CategoryManager();
+
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+
+            ViewBag.Category = objICategoryManager.GetAllCategories();
 
             return View();
         }
