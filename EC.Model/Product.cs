@@ -191,5 +191,9 @@ namespace EC.Model
         public long? UserId { get; set; }
 
         public virtual ICollection<ProductImage> ProductImages { get; set; }
+
+        public int StaticItemDetId { get; set; }
+
+        public virtual List<StaticItemDet> StaticItemDets { get; set; }
     }
 }
