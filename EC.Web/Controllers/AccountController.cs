@@ -54,6 +54,7 @@ namespace EC.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
+            
             WebSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
