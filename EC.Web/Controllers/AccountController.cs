@@ -25,6 +25,8 @@ namespace EC.Web.Controllers
     {
 
         IUserManager objIUserManager = new UserManager();
+        ICountryManager objICountryManager = new CountryManager();
+        ICityManager objICityManager = new CityManager();
         //
         // GET: /Account/Login
 
@@ -60,7 +62,7 @@ namespace EC.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            
+
             WebSecurity.Logout();
 
             return RedirectToAction("Index", "Home");
@@ -88,16 +90,15 @@ namespace EC.Web.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);                   
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
 
                     WebSecurity.Login(model.UserName, model.Password);
-                    UserProfile objUserProfile = new UserProfile();                    
+                    UserProfile objUserProfile = new UserProfile();
                     //this.objIUserManager.GetUser(User)
                     objUserProfile.UserId = this.objIUserManager.GetUser(model.UserName).UserId;
                     objUserProfile.FullName = model.FullName;
                     objUserProfile.Email = model.Email;
                     objUserProfile.MobNumber = model.MobNumber;
-                    objUserProfile.Password = model.Password;
                     objUserProfile.UserName = model.UserName;
 
                     objIUserManager.EditUser(objUserProfile);
@@ -160,7 +161,11 @@ namespace EC.Web.Controllers
         [HttpGet]
         public ActionResult ManageProfile(string userName)
         {
-           return View(objIUserManager.GetSingleUser(objIUserManager.GetUser(userName).UserId));
+            ViewBag.PossibleCountries = objICountryManager.GetAllCountry();
+            ViewBag.PossibleCities = objICityManager.GetAllCity();
+            UserProfile objUserProfile = new UserProfile();
+            objUserProfile = objIUserManager.GetSingleUser(objIUserManager.GetUser(userName).UserId);
+            return View(objUserProfile);
         }
 
         [HttpPost]
@@ -174,7 +179,7 @@ namespace EC.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
             return View(UserProfile);
-            
+
         }
 
         //

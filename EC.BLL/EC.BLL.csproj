@@ -40,9 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryManager.cs" />
+    <Compile Include="CityManager.cs" />
+    <Compile Include="CountryManager.cs" />
     <Compile Include="ICategoryManager.cs" />
+    <Compile Include="ICityManager.cs" />
     <Compile Include="IProductManager.cs" />
     <Compile Include="IUserManager.cs" />
+    <Compile Include="ICountryManager.cs" />
     <Compile Include="IVendorManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -35,6 +35,8 @@ namespace EC.Context
 
         public DbSet<StaticItem> StaticItems { get; set; }
         public DbSet<StaticItemDet> StaticItemDets { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -71,6 +71,7 @@ namespace EC.Context.Migrations
                 new StaticItemDet { StaticItemId = 2, ItemValue = 3, ItemText = "Price Low To High" }
                 );
 
+            //context.UserProfiles.
             //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
 
             //WebSecurity.Register("Demo", "123456", "demo@demo.com", true, "Demo", "Demo");

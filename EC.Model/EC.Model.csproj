@@ -49,6 +49,8 @@
     <Compile Include="AccountModels.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Country.cs" />
     <Compile Include="Entities\Class1.cs" />
     <Compile Include="Entities\Operations.cs" />
     <Compile Include="Entities\OperationsToRoles.cs" />

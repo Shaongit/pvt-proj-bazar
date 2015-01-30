@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace EC.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AdminController : Controller
     {
         //

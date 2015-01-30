@@ -34,6 +34,7 @@ namespace EC.Web.Controllers
         //
         // GET: /Product/Create
 
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -42,6 +43,7 @@ namespace EC.Web.Controllers
         //
         // POST: /Product/Create
 
+        [Authorize]
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -60,6 +62,7 @@ namespace EC.Web.Controllers
         //
         // GET: /Product/Edit/5
 
+        [Authorize]
         public ActionResult Edit(int id)
         {
             return View();
@@ -68,6 +71,7 @@ namespace EC.Web.Controllers
         //
         // POST: /Product/Edit/5
 
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -86,6 +90,7 @@ namespace EC.Web.Controllers
         //
         // GET: /Product/Delete/5
 
+        [Authorize]
         public ActionResult Delete(int id)
         {
             return View();
@@ -94,6 +99,7 @@ namespace EC.Web.Controllers
         //
         // POST: /Product/Delete/5
 
+        [Authorize]
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
