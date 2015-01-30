@@ -23,7 +23,7 @@ namespace EC.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            return View(); 
         }
 
         //
