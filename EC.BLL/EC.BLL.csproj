@@ -42,6 +42,7 @@
     <Compile Include="CategoryManager.cs" />
     <Compile Include="ICategoryManager.cs" />
     <Compile Include="IProductManager.cs" />
+    <Compile Include="IUserManager.cs" />
     <Compile Include="IVendorManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -112,7 +112,7 @@
                             <li>@Html.ActionLink("Register", "Register", "Account")</li>
                             <li>@Html.ActionLink("Log in", "Login", "Account")</li>
                             <li class="divider"></li>
-                            <li><a href="#">Profile Settings</a></li>
+                            <li>@Html.ActionLink("Profile Settings", "ManageProfile", "Account", new { userName = User.Identity.Name},null)</li>
                         </ul>
                     </li>
 
