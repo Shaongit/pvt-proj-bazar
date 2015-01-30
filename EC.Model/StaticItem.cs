@@ -14,7 +14,6 @@ namespace EC.Model
     /// </summary>
     public class StaticItem
     {
-
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string StaticName { get; set;  }
