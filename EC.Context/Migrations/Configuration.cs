@@ -26,6 +26,32 @@ namespace EC.Context.Migrations
                 
                 );
 
+
+            context.Categories.AddOrUpdate(
+                p => p.Name,
+                new Category
+                {
+                    Name = "Electronics",
+                    Description = "NA",
+                    MetaTitle = "Electronics",
+                    ShowOnHomePage = true,
+                    PictureId = 0,
+                    ParentCategoryId = 0,
+                    Deleted = false,
+                    Published = true,
+                    CreateDate = DateTime.Now,
+                    UpdatedDate = DateTime.Now,
+                    //SubCategories = new List<Category> { }
+                },
+                new Category { Name = "TV", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now, ParentCategoryId = 1 },
+                new Category { Name = "Camera", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now, ParentCategoryId = 1 },
+
+                                new Category { Name = "Books", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, ParentCategoryId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now },
+                                new Category { Name = "Mobile", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, ParentCategoryId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now },
+                                new Category { Name = "Computers", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, ParentCategoryId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now },
+                                new Category { Name = "Vehicles", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, ParentCategoryId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now }
+
+                );
             
             //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
             //Roles.CreateRole("Super Admin");

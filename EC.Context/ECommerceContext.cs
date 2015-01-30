@@ -23,6 +23,15 @@ namespace EC.Context
         //public DbSet<Product> Products { get; set; }
         public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        //public DbSet<Location> Locations { get; set; }
+        public DbSet<WishItem> WishItems { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
