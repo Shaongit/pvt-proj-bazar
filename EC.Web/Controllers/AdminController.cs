@@ -7,6 +7,7 @@ using System.Web.Security;
 
 namespace EC.Web.Controllers
 {
+    //[Authorize]
     public class AdminController : Controller
     {
         //
@@ -14,7 +15,6 @@ namespace EC.Web.Controllers
 
         public ActionResult Index()
         {
-            
             return View();
         }
 

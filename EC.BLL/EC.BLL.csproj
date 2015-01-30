@@ -41,9 +41,14 @@
   <ItemGroup>
     <Compile Include="IVendorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserManager.cs" />
     <Compile Include="VendorManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EC.Context\EC.Context.csproj">
+      <Project>{1d77493d-0f46-4b8f-beeb-c022966c1d92}</Project>
+      <Name>EC.Context</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EC.Model\EC.Model.csproj">
       <Project>{75bb24d9-d566-460f-a89b-4ead66b44a23}</Project>
       <Name>EC.Model</Name>
