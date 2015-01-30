@@ -128,6 +128,14 @@
     <Compile Include="Migrations\201501291051473_addroles.Designer.cs">
       <DependentUpon>201501291051473_addroles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501300946258_seedCategory.cs" />
+    <Compile Include="Migrations\201501300946258_seedCategory.Designer.cs">
+      <DependentUpon>201501300946258_seedCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501300958187_addDbSet.cs" />
+    <Compile Include="Migrations\201501300958187_addDbSet.Designer.cs">
+      <DependentUpon>201501300958187_addDbSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -149,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501291051473_addroles.resx">
       <DependentUpon>201501291051473_addroles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501300946258_seedCategory.resx">
+      <DependentUpon>201501300946258_seedCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501300958187_addDbSet.resx">
+      <DependentUpon>201501300958187_addDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -6,8 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-
-namespace Bazar.Models
+namespace EC.Model
 {
     public class Product
     {
