@@ -1,5 +1,11 @@
-﻿using System;
+﻿using EC.BLL;
+using EC.Context;
+using EC.Model;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,12 +14,13 @@ namespace EC.Web.Controllers
 {
     public class ProductController : Controller
     {
+        IProductManager objIProdMgr = new ProductManager();
         //
         // GET: /Product/
 
         public ActionResult Index()
         {
-            return View();
+            return View(objIProdMgr.GetAllProducts());
         }
 
         //

@@ -321,6 +321,9 @@
     <Content Include="Views\Vendors\Index.cshtml" />
     <Content Include="Views\Vendors\_CreateOrEdit.cshtml" />
     <Content Include="Views\Vendors\_ViewStart.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
