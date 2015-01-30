@@ -1,0 +1,22 @@
+﻿.container
+{
+    padding-left : 0px;
+    padding-right: 0px;
+    background-color:#FFFFFF;
+}
+#img-header
+{
+    width : 100%;
+    height : auto;
+    max-width : 100%;
+}
+#body
+{
+    min-height:600px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.navbar
+{
+    margin-bottom:0px;
+}
