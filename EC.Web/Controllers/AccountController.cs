@@ -9,16 +9,22 @@ using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using EC.Web.Filters;
-using EC.Web.Models;
+//using EC.Web.Models;
 using EC.Context;
 using EC.Model.Entities;
+using EC.Model;
+using EC.BLL;
 
 namespace EC.Web.Controllers
 {
+
+
     [Authorize]
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        IUserManager objIUserManager = new UserManager();
         //
         // GET: /Account/Login
 
@@ -35,7 +41,7 @@ namespace EC.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(EC.Web.Models.LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
@@ -82,8 +88,19 @@ namespace EC.Web.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);                   
+
                     WebSecurity.Login(model.UserName, model.Password);
+                    UserProfile objUserProfile = new UserProfile();                    
+                    //this.objIUserManager.GetUser(User)
+                    objUserProfile.UserId = this.objIUserManager.GetUser(model.UserName).UserId;
+                    objUserProfile.FullName = model.FullName;
+                    objUserProfile.Email = model.Email;
+                    objUserProfile.MobNumber = model.MobNumber;
+                    objUserProfile.Password = model.Password;
+                    objUserProfile.UserName = model.UserName;
+
+                    objIUserManager.EditUser(objUserProfile);
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)
@@ -138,6 +155,26 @@ namespace EC.Web.Controllers
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ManageProfile(string userName)
+        {
+           return View(objIUserManager.GetSingleUser(objIUserManager.GetUser(userName).UserId));
+        }
+
+        [HttpPost]
+        public ActionResult ManageProfile(UserProfile UserProfile)
+        {
+            if (ModelState.IsValid)
+            {
+                //context.Entry(vendor).State = EntityState.Modified;
+                //context.SaveChanges();
+                objIUserManager.EditUser(UserProfile);
+                return RedirectToAction("Index", "Home");
+            }
+            return View(UserProfile);
+            
         }
 
         //

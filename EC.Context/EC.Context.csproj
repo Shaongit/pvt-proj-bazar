@@ -144,6 +144,10 @@
     <Compile Include="Migrations\201501301243568_updatestatdet.Designer.cs">
       <DependentUpon>201501301243568_updatestatdet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201501301429211_Updateuser.cs" />
+    <Compile Include="Migrations\201501301429211_Updateuser.Designer.cs">
+      <DependentUpon>201501301429211_Updateuser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201501301243568_updatestatdet.resx">
       <DependentUpon>201501301243568_updatestatdet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501301429211_Updateuser.resx">
+      <DependentUpon>201501301429211_Updateuser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
