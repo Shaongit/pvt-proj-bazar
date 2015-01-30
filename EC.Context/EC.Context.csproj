@@ -151,11 +151,15 @@
     <Compile Include="Migrations\201501301429211_Updateuser.Designer.cs">
       <DependentUpon>201501301429211_Updateuser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501301834240_addedcountryCity.cs" />
+    <Compile Include="Migrations\201501301834240_addedcountryCity.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Migrations\201501301834240_addedcountryCity.Designer.cs">
       <DependentUpon>201501301834240_addedcountryCity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501301851198_userprofile.cs" />
+    <Compile Include="Migrations\201501301851198_userprofile.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Migrations\201501301851198_userprofile.Designer.cs">
       <DependentUpon>201501301851198_userprofile.cs</DependentUpon>
     </Compile>

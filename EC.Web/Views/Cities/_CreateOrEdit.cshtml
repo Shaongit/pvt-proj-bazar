@@ -1,0 +1,39 @@
+@model EC.Model.City
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.Name)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.Name)
+    @Html.ValidationMessageFor(model => model.Name)
+</div>
+
+@*<div class="editor-label">
+    @Html.LabelFor(model => model.CreateDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.CreateDate)
+    @Html.ValidationMessageFor(model => model.CreateDate)
+</div>
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.ModifiedDate)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.ModifiedDate)
+    @Html.ValidationMessageFor(model => model.ModifiedDate)
+</div>*@
+
+<div class="editor-label">
+    Country
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.CountryId, ((IEnumerable<EC.Model.Country>)ViewBag.PossibleCountries).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.CountryId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.CountryId)
+</div>

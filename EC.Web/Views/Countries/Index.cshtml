@@ -1,0 +1,53 @@
+@model IEnumerable<EC.Model.Country>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Cities
+        </th>
+        <th>
+            CreateDate
+        </th>
+        <th>
+            ModifiedDate
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@(item.Cities == null ? "None" : item.Cities.Count.ToString())
+        </td>
+        <td>
+			@String.Format("{0:g}", item.CreateDate)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.ModifiedDate)
+        </td>
+    </tr>
+}
+
+</table>
+
+

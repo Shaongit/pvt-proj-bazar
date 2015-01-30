@@ -1,0 +1,95 @@
+@model IEnumerable<EC.Model.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            MetaTitle
+        </th>
+        <th>
+            ParentCategoryId
+        </th>
+        <th>
+            SubCategories
+        </th>
+        <th>
+            PictureId
+        </th>
+        <th>
+            ShowOnHomePage
+        </th>
+        <th>
+            Published
+        </th>
+        <th>
+            Deleted
+        </th>
+        <th>
+            CreateDate
+        </th>
+        <th>
+            UpdatedDate
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@item.Name
+        </td>
+        <td>
+			@item.Description
+        </td>
+        <td>
+			@item.MetaTitle
+        </td>
+        <td>
+			@item.ParentCategoryId
+        </td>
+        <td>
+			@(item.SubCategories == null ? "None" : item.SubCategories.Count.ToString())
+        </td>
+        <td>
+			@item.PictureId
+        </td>
+        <td>
+			@item.ShowOnHomePage
+        </td>
+        <td>
+			@item.Published
+        </td>
+        <td>
+			@item.Deleted
+        </td>
+        <td>
+			@String.Format("{0:g}", item.CreateDate)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.UpdatedDate)
+        </td>
+    </tr>
+}
+
+</table>
+
+
