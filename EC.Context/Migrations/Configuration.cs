@@ -52,6 +52,24 @@ namespace EC.Context.Migrations
                                 new Category { Name = "Vehicles", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, ParentCategoryId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now }
 
                 );
+            context.StaticItems.AddOrUpdate(
+                a => a.StaticName,
+                new StaticItem { StaticName="Price Range" },
+                new StaticItem { StaticName="Sort" }
+                );
+
+            context.StaticItemDets.AddOrUpdate(
+                b => b.Id,
+                new StaticItemDet { StaticItemId = 1, ItemValue = 1, ItemText = "0-1000tk" },
+                new StaticItemDet { StaticItemId = 1, ItemValue = 2, ItemText = "1001-2000tk" },
+                new StaticItemDet { StaticItemId = 1, ItemValue = 3, ItemText = "2001-3000tk" },
+                new StaticItemDet { StaticItemId = 1, ItemValue = 4, ItemText = "3001-4000tk" },
+                new StaticItemDet { StaticItemId = 1, ItemValue = 5, ItemText = "4001-5000tk" },
+                new StaticItemDet { StaticItemId = 1, ItemValue = 6, ItemText = "More than 5000tk" },
+                new StaticItemDet { StaticItemId = 2, ItemValue = 1, ItemText = "Most Sold" },
+                new StaticItemDet { StaticItemId = 2, ItemValue = 2, ItemText = "Price High To Low" },
+                new StaticItemDet { StaticItemId = 2, ItemValue = 3, ItemText = "Price Low To High" }
+                );
 
             //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
 

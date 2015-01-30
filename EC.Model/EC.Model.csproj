@@ -63,6 +63,8 @@
     <Compile Include="ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingCartItem.cs" />
+    <Compile Include="StaticItem.cs" />
+    <Compile Include="StaticItemDet.cs" />
     <Compile Include="Vendor.cs" />
     <Compile Include="WishItem.cs" />
   </ItemGroup>

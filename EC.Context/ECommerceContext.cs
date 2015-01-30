@@ -33,6 +33,9 @@ namespace EC.Context
         //public DbSet<Location> Locations { get; set; }
         public DbSet<WishItem> WishItems { get; set; }
 
+        public DbSet<StaticItem> StaticItems { get; set; }
+        public DbSet<StaticItemDet> StaticItemDets { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
