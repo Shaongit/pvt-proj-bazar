@@ -20,3 +20,28 @@
 {
     margin-bottom:0px;
 }
+
+
+#loginWishList
+{
+    z-index:100;
+    position:absolute;    
+    /*color:black;*/
+    font-size:14px;
+    font-weight:bold;
+    left:800px;
+    top:2px;
+    /*top:350px;*/
+}
+
+#image
+{    
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+#logoutForm
+{
+    float:left;
+}
