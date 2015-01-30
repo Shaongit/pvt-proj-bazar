@@ -40,6 +40,7 @@ namespace EC.Web.Filters
                     }
 
                     WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
                 }
                 catch (Exception ex)
                 {

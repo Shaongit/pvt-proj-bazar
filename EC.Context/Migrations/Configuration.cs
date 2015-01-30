@@ -52,7 +52,11 @@ namespace EC.Context.Migrations
                                 new Category { Name = "Vehicles", Description = "NA", MetaTitle = "Book,Study", ShowOnHomePage = true, PictureId = 0, ParentCategoryId = 0, Deleted = false, Published = true, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now }
 
                 );
-            
+
+            //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
+
+            //WebSecurity.Register("Demo", "123456", "demo@demo.com", true, "Demo", "Demo");
+
             //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
             //Roles.CreateRole("Super Admin");
             //Roles.CreateRole("Admin");

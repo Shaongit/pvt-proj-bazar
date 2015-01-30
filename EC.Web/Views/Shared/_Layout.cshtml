@@ -52,7 +52,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account Settings <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Register</a></li>
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
                             <li><a href="#">Login</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Profile Settings</a></li>
@@ -65,7 +65,6 @@
             </div>
         </div>
         <div id="body">
-            <h1>Rendar body</h1>
             @RenderBody()
         </div>
 
