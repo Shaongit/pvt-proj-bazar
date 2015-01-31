@@ -123,55 +123,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ECommerceContext.cs" />
-    <Compile Include="Migrations\201501281623536_initialmigration.cs" />
-    <Compile Include="Migrations\201501281623536_initialmigration.Designer.cs">
-      <DependentUpon>201501281623536_initialmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501291051473_addroles.cs" />
-    <Compile Include="Migrations\201501291051473_addroles.Designer.cs">
-      <DependentUpon>201501291051473_addroles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501300946258_seedCategory.cs" />
-    <Compile Include="Migrations\201501300946258_seedCategory.Designer.cs">
-      <DependentUpon>201501300946258_seedCategory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501300958187_addDbSet.cs" />
-    <Compile Include="Migrations\201501300958187_addDbSet.Designer.cs">
-      <DependentUpon>201501300958187_addDbSet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301208282_createstaticitem.cs" />
-    <Compile Include="Migrations\201501301208282_createstaticitem.Designer.cs">
-      <DependentUpon>201501301208282_createstaticitem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301243568_updatestatdet.cs" />
-    <Compile Include="Migrations\201501301243568_updatestatdet.Designer.cs">
-      <DependentUpon>201501301243568_updatestatdet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301429211_Updateuser.cs" />
-    <Compile Include="Migrations\201501301429211_Updateuser.Designer.cs">
-      <DependentUpon>201501301429211_Updateuser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301834240_addedcountryCity.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Migrations\201501301834240_addedcountryCity.Designer.cs">
-      <DependentUpon>201501301834240_addedcountryCity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501301851198_userprofile.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Migrations\201501301851198_userprofile.Designer.cs">
-      <DependentUpon>201501301851198_userprofile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501310052003_addproductseed.cs" />
-    <Compile Include="Migrations\201501310052003_addproductseed.Designer.cs">
-      <DependentUpon>201501310052003_addproductseed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501310242494_upadatewishitem.cs" />
-    <Compile Include="Migrations\201501310242494_upadatewishitem.Designer.cs">
-      <DependentUpon>201501310242494_upadatewishitem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="obj\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,41 +139,7 @@
       <Name>EC.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501281623536_initialmigration.resx">
-      <DependentUpon>201501281623536_initialmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501291051473_addroles.resx">
-      <DependentUpon>201501291051473_addroles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501300946258_seedCategory.resx">
-      <DependentUpon>201501300946258_seedCategory.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501300958187_addDbSet.resx">
-      <DependentUpon>201501300958187_addDbSet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301208282_createstaticitem.resx">
-      <DependentUpon>201501301208282_createstaticitem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301243568_updatestatdet.resx">
-      <DependentUpon>201501301243568_updatestatdet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301429211_Updateuser.resx">
-      <DependentUpon>201501301429211_Updateuser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301834240_addedcountryCity.resx">
-      <DependentUpon>201501301834240_addedcountryCity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501301851198_userprofile.resx">
-      <DependentUpon>201501301851198_userprofile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501310052003_addproductseed.resx">
-      <DependentUpon>201501310052003_addproductseed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501310242494_upadatewishitem.resx">
-      <DependentUpon>201501310242494_upadatewishitem.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -139,10 +139,6 @@
       <Project>{243366a4-d760-4bce-8296-37cd2c3980a1}</Project>
       <Name>EC.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EC.Security\EC.Security.csproj">
-      <Project>{99f8a3ad-b370-49b7-b5f2-a620e9d2a5b8}</Project>
-      <Name>EC.Security</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EC.Utility\EC.Utility.csproj">
       <Project>{723f86fc-2bcd-41d7-87de-e72d3f63b92e}</Project>
       <Name>EC.Utility</Name>

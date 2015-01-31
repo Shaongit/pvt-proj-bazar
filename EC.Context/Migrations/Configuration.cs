@@ -7,7 +7,7 @@ namespace EC.Context.Migrations
     using System.Linq;
     using WebMatrix.WebData;
     using System.Web.Security;
-    
+
     internal sealed class Configuration : DbMigrationsConfiguration<ECommerceContext>
     {
         public Configuration()
@@ -19,11 +19,11 @@ namespace EC.Context.Migrations
         {
             context.Vendors.AddOrUpdate(
                 v => v.Name,
-                new Vendor { Name="HP", Address="USA", Description="NA", IsActive=true, Published=true, Deleted=false, CreateDate=DateTime.Now, UpdatedDate = DateTime.Now},
+                new Vendor { Name = "HP", Address = "USA", Description = "NA", IsActive = true, Published = true, Deleted = false, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now },
                 new Vendor { Name = "Dell", Address = "USA", Description = "NA", IsActive = true, Published = true, Deleted = false, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now },
                 new Vendor { Name = "ASUS", Address = "USA", Description = "NA", IsActive = true, Published = true, Deleted = false, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now },
                 new Vendor { Name = "Intel", Address = "USA", Description = "NA", IsActive = true, Published = true, Deleted = false, CreateDate = DateTime.Now, UpdatedDate = DateTime.Now }
-                
+
                 );
 
 
@@ -54,8 +54,8 @@ namespace EC.Context.Migrations
                 );
             context.StaticItems.AddOrUpdate(
                 a => a.StaticName,
-                new StaticItem { StaticName="Price Range" },
-                new StaticItem { StaticName="Sort" }
+                new StaticItem { StaticName = "Price Range" },
+                new StaticItem { StaticName = "Sort" }
                 );
 
             context.StaticItemDets.AddOrUpdate(
@@ -73,7 +73,7 @@ namespace EC.Context.Migrations
 
             context.Products.AddOrUpdate(
                 p => p.Name,
-                new Product { Name="Walton", CategoryId =2, ShortDescription = "NA", FullDescription = "NA", VendorId = 1, ShowOnHomePage = false, AllowCustomerReviews=false, IsGiftCard = false, IsShipEnabled = false, IsFreeShipping = true, IsActive = true, ShipSeparately =false, StockQuantity = 2, DisplayStockAvailability = false, DisplayStockQuantity = false, UnitPrice = 100, OldPrice = 0, SpecialPrice = 0, HasDiscountsApplied = false, BookQty = 0, LockQty =0, Published = true, Deleted = false, CreatedDate = DateTime.Now, UserId = 1, StaticItemDetId = 1});
+                new Product { Name = "Walton", CategoryId = 2, ShortDescription = "NA", FullDescription = "NA", VendorId = 1, ShowOnHomePage = false, AllowCustomerReviews = false, IsGiftCard = false, IsShipEnabled = false, IsFreeShipping = true, IsActive = true, ShipSeparately = false, StockQuantity = 2, DisplayStockAvailability = false, DisplayStockQuantity = false, UnitPrice = 100, OldPrice = 0, SpecialPrice = 0, HasDiscountsApplied = false, BookQty = 0, LockQty = 0, Published = true, Deleted = false, CreatedDate = DateTime.Now, UserId = 1, StaticItemDetId = 1 });
             //context.UserProfiles.
             //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
 
@@ -89,8 +89,8 @@ namespace EC.Context.Migrations
 
             //Roles.AddUserToRole("mahedee", "Admin");
 
-            
-            
+
+
             //Roles
             //WebSecurity.R
             //  This method will be called after migrating to the latest version.

@@ -17,7 +17,7 @@
     var i = 0;
 
     var filequeue = new Array();
-    var filequeueAfterUpload ='';
+    var filequeueAfterUpload = '';
 
     var jobimageuploadid = -1;
     $(document).ready(function () {
@@ -49,7 +49,7 @@
             //    formData.append("FileUpload", file);
             //}
 
-            
+
             if (totalFiles > 5) {
                 errorDisplay('Maximum number of allowable file uploads has been exceeded!!');
             } else {
@@ -72,8 +72,8 @@
                     if (window.File && window.FileReader && window.FileList && window.Blob) {
                         var reader = new FileReader();
 
-                        reader.onload = (function(theFile) {
-                            return function(e) {
+                        reader.onload = (function (theFile) {
+                            return function (e) {
                                 var li = document.createElement("li");
                                 li.setAttribute("data-icon", "delete");
 
@@ -124,7 +124,7 @@
 
             $("#fileToUpload").val("");
 
-        } catch(err) {
+        } catch (err) {
             alert("Exception " + err);
         }
     }
@@ -134,7 +134,7 @@
 
         try {
 
-            $("#uploadfilelist li").each(function() {
+            $("#uploadfilelist li").each(function () {
 
                 if ($(this).find("h3").text().indexOf(processingfileuniquekey) != -1) {
 
@@ -170,7 +170,7 @@
 
             //$("#uploadfilelist").listview("refresh");
 
-        } catch(err) {
+        } catch (err) {
             alert("Exception " + err);
         }
     }
@@ -178,7 +178,8 @@
     //uploading files
     function UploadFiles() {
 
-        try {debugger
+        try {
+            debugger
 
             while (filequeue.length > 0) {
 
@@ -195,7 +196,7 @@
                 }
             }
 
-        } catch(err) {
+        } catch (err) {
             alert("Exception " + err);
         }
 
@@ -506,10 +507,9 @@
     function errorDisplay(error) {
         $("#perror").text(error).fadeOut(4000);
     }
-    function UploadSelectedFiles()
-    {
+    function UploadSelectedFiles() {
         try {
-            
+
             while (filequeue.length > 0) {
 
                 var item = filequeue.pop();
@@ -590,7 +590,7 @@
                 @Html.ValidationMessageFor(model => model.StockQuantity)
             </td>
         </tr>
-
+        @*<div class="alert alert-danger" role="alert">...</div>*@
 
         <tr>
             <td>
@@ -598,6 +598,7 @@
             </td>
             <td>
                 @Html.EditorFor(model => model.BookQty, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.BookQty)
             </td>
         </tr>
 
@@ -607,6 +608,7 @@
             </td>
             <td>
                 @Html.EditorFor(model => model.LockQty, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.LockQty)
             </td>
         </tr>
         <tr>
@@ -665,10 +667,10 @@
             <ul data-role="listview" data-inset="true">
                 <li data-role="fieldcontain">
                     @*<label id="sizereducechkboxlbl" style="display: none">
-        <input type="checkbox" name="checkbox-0" id="sizereducechkbox" style="display: none" /> Reduce size and upload
-    </label>
-        <input type="button" name="UploadFiles" id="UploadFiles" onclick="UploadFiles();" value="Upload [max. 5 files]" />*@
-                    
+                            <input type="checkbox" name="checkbox-0" id="sizereducechkbox" style="display: none" /> Reduce size and upload
+                        </label>
+                            <input type="button" name="UploadFiles" id="UploadFiles" onclick="UploadFiles();" value="Upload [max. 5 files]" />*@
+
                 </li>
                 @Html.TextBox("ImagePaths", "", new { @readonly = "readonly" })
             </ul>

@@ -33,6 +33,8 @@ namespace EC.Model
         public virtual Category Category { get; set; }
 
         public string ShortDescription { get; set; }
+
+        [Display(Name = "Full Description")]
         /// <summary>
         /// Gets or sets the full description
         /// </summary>
@@ -46,6 +48,7 @@ namespace EC.Model
         /// <summary>
         /// Gets or sets a vendor identifier
         /// </summary>
+        [Display(Name = "Vendor Name")]
         public int? VendorId { get; set; }
         [ForeignKey("VendorId")]
         public Vendor Vendor { get; set; }
@@ -59,6 +62,7 @@ namespace EC.Model
         /// <summary>
         /// Gets or sets the meta keywords
         /// </summary>
+        [Display(Name = "Meta Keywords")]
         public string MetaKeywords { get; set; }
         /// <summary>
         /// Gets or sets the meta description
@@ -67,6 +71,7 @@ namespace EC.Model
         /// <summary>
         /// Gets or sets the meta title
         /// </summary>
+        [Display(Name = "Meta Title")]
         public string MetaTitle { get; set; }
 
         /// <summary>
@@ -112,7 +117,7 @@ namespace EC.Model
         /// <summary>
         /// Gets or sets a value indicating whether the product is marked as tax exempt
         /// </summary>
-
+        [Display(Name = "Stock Quantity")]
         public int StockQuantity { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether to display stock availability
@@ -129,6 +134,7 @@ namespace EC.Model
         /// <summary>
         /// Gets or sets the low stock activity identifier
         /// </summary>
+        [Display(Name = "Unit Price")]
         public decimal UnitPrice { get; set; }
         /// <summary>
         /// Gets or sets the old price
@@ -136,7 +142,9 @@ namespace EC.Model
         public decimal? OldPrice { get; set; }
         /// <summary>
         /// Gets or sets the product special price
-        /// </summary>
+
+        [Range(1, 100)]
+        [DataType(DataType.Currency)]/// </summary>
         public decimal? SpecialPrice { get; set; }
         /// <summary>
         /// Gets or sets the start date and time of the special price
@@ -150,7 +158,16 @@ namespace EC.Model
         /// Gets or sets a value indicating whether a customer enters price
         /// </summary>
         public bool HasDiscountsApplied { get; set; }
+
+        //[Range(1, 100)]
+        [DataType(DataType.Currency)]
+        [RegularExpression(@"^[0-9]{0,15}$", ErrorMessage = "Book Quantity should contain only numbers")]
+        [Display(Name = "Book Quantity")]
         public decimal? BookQty { get; set; }
+
+        [DataType(DataType.Currency)]
+        [RegularExpression(@"^[0-9]{0,15}$", ErrorMessage = "Lock Quantity should contain only numbers")]
+        [Display(Name = "Lock Quantity")]
         public decimal? LockQty { get; set; }
         /// <summary>
         /// Gets or sets the weight
@@ -169,11 +186,14 @@ namespace EC.Model
         /// </summary>
         public decimal? Height { get; set; }
 
+        [Display(Name = "Active")]
         public bool IsActive { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the entity is published
         /// </summary>
+        /// 
+        [Display(Name = "Published")]
         public bool Published { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether the entity has been deleted
