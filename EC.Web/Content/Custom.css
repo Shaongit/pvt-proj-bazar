@@ -46,6 +46,12 @@
     float:left;
 }
 
+.field-validation-error
+{
+    color:red;
+}
+
+
 .grid-product {
     background: none repeat scroll 0 0 #ffffff;
     border: 1px solid #f0f0f0;
