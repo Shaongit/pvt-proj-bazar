@@ -71,7 +71,7 @@
                             <ul class="dropdown-menu">
                                 @foreach (var subcategory in category.SubCategories)
                                 {
-                                    <li>@Html.ActionLink(@subcategory.Name, "ProjectTasks", "Tasks")</li>
+                                    <li>@Html.ActionLink(@subcategory.Name, "CategoryWiseProducts", "Product", new { @categoryId = subcategory.Id}, null)</li>
                                 }
 
                             </ul>

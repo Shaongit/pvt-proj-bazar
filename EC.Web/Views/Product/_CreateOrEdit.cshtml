@@ -17,7 +17,7 @@
     var i = 0;
 
     var filequeue = new Array();
-    var filequeueAfterUpload ;
+    var filequeueAfterUpload ='';
 
     var jobimageuploadid = -1;
     $(document).ready(function () {
@@ -28,6 +28,7 @@
     function fileSelected() {
 
         try {
+            filequeueAfterUpload = '';
 
             count = 0;
             progresscount = 0;
@@ -65,7 +66,7 @@
                     $("#sizereducechkbox").show("slow");
                     $("#sizereducechkboxlbl").show("slow");
 
-                    processingfileuniquekey = "PC00" + chromeCount + "-";
+                    processingfileuniquekey = "0" + chromeCount + "-";
                     var map = new Array(selectedfile, processingfileuniquekey);
 
                     if (window.File && window.FileReader && window.FileList && window.Blob) {
@@ -82,8 +83,8 @@
 
                                 var img = document.createElement("img");
                                 img.setAttribute("src", e.target.result);
-                                img.setAttribute("height", "80");
-                                img.setAttribute("width", "80");
+                                img.setAttribute("height", "150");
+                                img.setAttribute("width", "150");
                                 newlink.appendChild(img);
 
                                 var h3 = document.createElement("h3");
@@ -160,12 +161,12 @@
 
             });
 
-            if (filequeue.length == 0) {
-                $('#sizereducechkbox').attr('checked', false);
-                $("#sizereducechkbox").checkboxradio("refresh");
-                $("#sizereducechkbox").fadeOut(100);
-                $("#sizereducechkboxlbl").fadeOut(100);
-            }
+            //if (filequeue.length == 0) {
+            //    $('#sizereducechkbox').attr('checked', false);
+            //    $("#sizereducechkbox").checkboxradio("refresh");
+            //    $("#sizereducechkbox").fadeOut(100);
+            //    $("#sizereducechkboxlbl").fadeOut(100);
+            //}
 
             //$("#uploadfilelist").listview("refresh");
 
@@ -290,7 +291,7 @@
             xhr.setRequestHeader("X-File-Type", file.type);
 
             xhr.send(file);
-            filequeueAfterUpload = file.name + ';';
+            filequeueAfterUpload += file.name + ';';
 
             xhr.onreadystatechange = function () {
 
@@ -326,10 +327,10 @@
 
             if (filequeue.length == 0) {
 
-                $('#sizereducechkbox').attr('checked', false);
-                $("#sizereducechkbox").checkboxradio("refresh");
-                $("#sizereducechkbox").fadeOut(100);
-                $("#sizereducechkboxlbl").fadeOut(100);
+                //$('#sizereducechkbox').attr('checked', false);
+                //$("#sizereducechkbox").checkboxradio("refresh");
+                //$("#sizereducechkbox").fadeOut(100);
+                //$("#sizereducechkboxlbl").fadeOut(100);
 
                 chromeCount = 0;
 
@@ -479,10 +480,10 @@
 
                         if (filequeue.length == 0) {
 
-                            $('#sizereducechkbox').attr('checked', false);
-                            $("#sizereducechkbox").checkboxradio("refresh");
-                            $("#sizereducechkbox").fadeOut(100);
-                            $("#sizereducechkboxlbl").fadeOut(100);
+                            //$('#sizereducechkbox').attr('checked', false);
+                            //$("#sizereducechkbox").checkboxradio("refresh");
+                            //$("#sizereducechkbox").fadeOut(100);
+                            //$("#sizereducechkboxlbl").fadeOut(100);
 
                             chromeCount = 0;
 
@@ -536,6 +537,7 @@
 <fieldset>
     <legend>Product Basic Information</legend>
     <table class="table">
+        @Html.Hidden("CategoryId", (int)ViewBag.CategoryId)
         <tr>
             <td>
                 @Html.LabelFor(model => model.Name)
@@ -559,11 +561,11 @@
 
         <tr>
             <td>
-                Vendor
+                @Html.LabelFor(model => model.VendorId)
             </td>
 
             <td>
-                @Html.DropDownList("VendorId", new SelectList(ViewBag.Vendors, "Value", "Text", @Model.VendorId))
+                @Html.DropDownList("VendorId", new SelectList(ViewBag.Vendors, "Value", "Text"))
                 @Html.ValidationMessageFor(model => model.VendorId)
             </td>
         </tr>
@@ -595,19 +597,16 @@
                 @Html.LabelFor(model => model.BookQty)
             </td>
             <td>
-                @Html.EditorFor(model => model.BookQty)
-                @Html.ValidationMessageFor(model => model.BookQty)
+                @Html.EditorFor(model => model.BookQty, new { @readonly = "readonly" })
             </td>
         </tr>
-
 
         <tr>
             <td>
                 @Html.LabelFor(model => model.LockQty)
             </td>
             <td>
-                @Html.EditorFor(model => model.LockQty)
-                @Html.ValidationMessageFor(model => model.LockQty)
+                @Html.EditorFor(model => model.LockQty, new { @readonly = "readonly" })
             </td>
         </tr>
         <tr>
