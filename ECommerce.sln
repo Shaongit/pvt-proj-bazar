@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC.BLL", "EC.BLL\EC.BLL.csproj", "{8124933A-D00B-4D45-AEF5-02433EE2056A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EC.Model", "EC.Model\EC.Model.csproj", "{75BB24D9-D566-460F-A89B-4EAD66B44A23}"

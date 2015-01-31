@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EC.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,6 +21,10 @@ namespace EC.Model
 
         [ForeignKey("ProductId")]
         public virtual Product Product { get; set; }
+
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual UserProfile UserProfile { get; set; }
     
         /// <summary>
         /// Gets or sets the date and time of product creation

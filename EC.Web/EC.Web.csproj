@@ -167,6 +167,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -179,6 +180,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
+    <Compile Include="Controllers\WishItemsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -261,6 +263,7 @@
     <Content Include="Images\banner1.jpg" />
     <Content Include="Images\bannerAdmin.jpg" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\noimage.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -354,6 +357,12 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\_CreateOrEdit.cshtml" />
     <Content Include="Views\Account\ManageProfile.cshtml" />
+    <Content Include="Views\WishItems\Create.cshtml" />
+    <Content Include="Views\WishItems\Edit.cshtml" />
+    <Content Include="Views\WishItems\Delete.cshtml" />
+    <Content Include="Views\WishItems\Details.cshtml" />
+    <Content Include="Views\WishItems\Index.cshtml" />
+    <Content Include="Views\WishItems\_CreateOrEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
