@@ -98,7 +98,7 @@ namespace EC.Web.Controllers
                         {
                             Directory.CreateDirectory(directoryPath);
                         }
-                        for (int i = 0; i < strPicArr.Length - 1; i++)
+                        for (int i = 0; i < strPicArr.Length - 1; i++) 
                         {
                             string uploadedFilePath = string.Format("{0}{1}", directoryPath, strPicArr[i]);
 
