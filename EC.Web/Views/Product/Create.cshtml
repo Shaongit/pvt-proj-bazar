@@ -9,8 +9,6 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Product</legend>
 
         @Html.Partial("_CreateOrEdit", Model)
 
@@ -18,7 +16,6 @@
         <p>
             <input type="submit" class="btn btn-default" value="Create" />
         </p>
-    </fieldset>
 }
 
 
@@ -26,7 +23,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

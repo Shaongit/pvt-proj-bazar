@@ -7,136 +7,531 @@
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
+
 <script type="text/javascript">
-    //get file size
-    function GetFileSize(fileid) {
+
+    var count = 0;
+    var progresscount = 0;
+    var start;
+    var chromeCount = 0;
+    var i = 0;
+
+    var filequeue = new Array();
+    var filequeueAfterUpload ;
+
+    var jobimageuploadid = -1;
+    $(document).ready(function () {
+        //$('#uploadfilelist').listview('refresh');
+    });
+
+    //displaying selected file details
+    function fileSelected() {
+
         try {
-            var fileSize = 0;
-            //for IE
-            if ($.browser.msie) {
-                //before making an object of ActiveXObject,
-                //please make sure ActiveX is enabled in your IE browser
-                var objFSO = new ActiveXObject("Scripting.FileSystemObject"); var filePath = $("#" + fileid)[0].value;
-                var objFile = objFSO.getFile(filePath);
-                var fileSize = objFile.size; //size in kb
-                fileSize = fileSize / 1048576; //size in mb
+
+            count = 0;
+            progresscount = 0;
+            var selectedfile;
+            var processingfile;
+            var processingfileuniquekey;
+
+            $("#perror").text('').fadeIn(1);
+            ////$("#uploadfilelist").listview("refresh");
+
+            var files = document.getElementById('fileToUpload').files;
+
+            var formData = new FormData();
+            var totalFiles = document.getElementById("fileToUpload").files.length;
+            //for (var i = 0; i < totalFiles; i++) {
+            //    var file = document.getElementById("fileToUpload").files[i];
+
+            //    formData.append("FileUpload", file);
+            //}
+
+            
+            if (totalFiles > 5) {
+                errorDisplay('Maximum number of allowable file uploads has been exceeded!!');
+            } else {
+                selectedfile = files[0];
+
+                if (!selectedfile.type.match('image.*')) {
+                    errorDisplay('Only image files are allowed');
+                } else if (selectedfile.size > 10485760) {
+                    errorDisplay('Maximum file size exceeds');
+                }
+
+                if (selectedfile.type.match('image.*') && selectedfile.size < 10485760) {
+
+                    $("#sizereducechkbox").show("slow");
+                    $("#sizereducechkboxlbl").show("slow");
+
+                    processingfileuniquekey = "PC00" + chromeCount + "-";
+                    var map = new Array(selectedfile, processingfileuniquekey);
+
+                    if (window.File && window.FileReader && window.FileList && window.Blob) {
+                        var reader = new FileReader();
+
+                        reader.onload = (function(theFile) {
+                            return function(e) {
+                                var li = document.createElement("li");
+                                li.setAttribute("data-icon", "delete");
+
+                                var newlink = document.createElement('a');
+                                newlink.setAttribute("href", "javascript:void(0);");
+                                newlink.setAttribute("onclick", "removeImage('" + processingfileuniquekey + "');");
+
+                                var img = document.createElement("img");
+                                img.setAttribute("src", e.target.result);
+                                img.setAttribute("height", "80");
+                                img.setAttribute("width", "80");
+                                newlink.appendChild(img);
+
+                                var h3 = document.createElement("h3");
+                                var h3Text = document.createTextNode(processingfileuniquekey + theFile.name);
+                                h3.appendChild(h3Text);
+                                newlink.appendChild(h3);
+
+                                var p = document.createElement("p");
+                                newlink.appendChild(p);
+
+                                li.appendChild(newlink);
+
+                                document.getElementById("uploadfilelist").appendChild(li);
+
+                                ////$("#uploadfilelist").listview("refresh");
+
+                                filequeue.push({ file: map, li: li });
+
+                                chromeCount = chromeCount + 1;
+
+                            };
+                        })(selectedfile);
+
+                        // Read in the image file as a data URL.
+                        reader.readAsDataURL(selectedfile);
+
+                    } else {
+
+                        $("#uploadfilelist").append('<li data-icon="delete" id=' + i + '><a href="javascript:void(0);" onclick="remove(' + i + ');">' + processingfile.name + '<p style="padding: 2px 0px 0px 0px"></p></a></li>');
+                        //$("#uploadfilelist").listview("refresh");
+
+                        i = i + 1;
+                    }
+
+                }
             }
-                //for FF, Safari, Opeara and Others
-            else {
-                fileSize = $("#" + fileid)[0].files[0].size //size in kb
-                fileSize = fileSize / 1048576; //size in mb
-            }
-            return fileSize;
-        }
-        catch (e) {
-            alert("Error is :" + e);
+
+            $("#fileToUpload").val("");
+
+        } catch(err) {
+            alert("Exception " + err);
         }
     }
 
-    //get file path from client system
-    function getNameFromPath(strFilepath) {
-        var objRE = new RegExp(/([^\/\\]+)$/);
-        var strName = objRE.exec(strFilepath);
-        if (strName == null) {
-            return null;
-        }
-        else {
-            return strName[0];
+    //removing selected file if needed, before uploading
+    function removeImage(processingfileuniquekey) {
+
+        try {
+
+            $("#uploadfilelist li").each(function() {
+
+                if ($(this).find("h3").text().indexOf(processingfileuniquekey) != -1) {
+
+                    var containtext = $(this).find("h3").text();
+
+                    $(this).remove();
+
+                    for (var b = 0; b < filequeue.length; b++) {
+
+                        var processarray = filequeue[b];
+                        var processmap = processarray.file;
+
+                        if (containtext.indexOf(processmap[1]) != -1) {
+
+                            filequeue.splice(b, 1);
+
+                            break;
+                        }
+                    }
+
+                    //$("#uploadfilelist").listview("refresh");
+
+                }
+
+            });
+
+            if (filequeue.length == 0) {
+                $('#sizereducechkbox').attr('checked', false);
+                $("#sizereducechkbox").checkboxradio("refresh");
+                $("#sizereducechkbox").fadeOut(100);
+                $("#sizereducechkboxlbl").fadeOut(100);
+            }
+
+            //$("#uploadfilelist").listview("refresh");
+
+        } catch(err) {
+            alert("Exception " + err);
         }
     }
 
-    $("#btnSubmit").live("click", function () {
-        if ($('#fileToUpload').val() == "") {
-            $("#spanfile").html("Please upload file");
-            return false;
+    //uploading files
+    function UploadFiles() {
+
+        try {debugger
+
+            while (filequeue.length > 0) {
+
+                var item = filequeue.pop();
+                var processarray = item.file;
+                var file = processarray[0];
+                var key = processarray[1];
+
+                if ($('#sizereducechkbox').is(':checked')) {
+                    resizeAndUpload(file, key);
+                }
+                else {
+                    upload(file, key);
+                }
+            }
+
+        } catch(err) {
+            alert("Exception " + err);
         }
-        else {
-            checkfile();
+
+    }
+
+    //used to prevent caching of the ajax request(specially with Mobile Safari)
+    function GUID() {
+        var S4 = function () {
+            return Math.floor(
+                Math.random() * 0x10000 /* 65536 */
+            ).toString(16);
+        };
+
+        return (
+            S4() + S4() + "-" +
+                S4() + "-" +
+                    S4() + "-" +
+                        S4() + "-" +
+                            S4() + S4() + S4()
+        );
+    }
+
+    //default upload file function
+    function upload(file, key, item) {
+
+        try {
+
+            var uploadurl = '@Url.Action("UploadFiles", "Product")';
+            uploadurl += "?bustCache=" + GUID();
+
+            var li = item.li;
+
+            var xhr = new XMLHttpRequest(), upload = xhr.upload;
+
+            upload.addEventListener("loadstart", function (ev) {
+
+                var containtext = $(li).find("h3").text();
+                var index = containtext.indexOf(" upload error");
+
+                if (index != -1) {
+
+                    var refreshtext = containtext.substring(0, index);
+
+                    $(li).find('h3').text(refreshtext);
+                    //$("#uploadfilelist").listview("refresh");
+
+                }
+                else {
+
+                    //$("#uploadfilelist").listview("refresh");
+
+                }
+
+            }, false);
+
+            upload.addEventListener("progress", function (ev) {
+
+                if (ev.lengthComputable) {
+                    var percentComplete = Math.round(ev.loaded * 100 / ev.total);
+                    $(li).find("p").text("Uploading " + percentComplete + "%");
+                    $(li).find("p").css("color", "#3DD13F");
+                }
+
+            }, false);
+            upload.addEventListener("load", function (evt) {
+
+                $(li).find("h3").css("color", "#3DD13F");
+
+            }, false);
+            upload.addEventListener("error", function (ev) {
+
+                if (xhr.status != 500) {
+
+                    filequeue.push(item);
+
+                    var containtext = $(li).find("h3").text();
+                    $(li).find("h3").text(containtext + " upload error");
+                    $(li).find("h3").css("color", "#FF0000");
+                    $(li).find("p").text("Uploading 0%");
+                    $(li).find("p").css("color", "#FF0000");
+
+                }
+
+            }, false);
+
+            xhr.open("POST", uploadurl);
+
+            xhr.setRequestHeader("Content-type", "multipart/form-data");
+
+            xhr.setRequestHeader("X-File-Name", (key + file.name));
+
+            xhr.setRequestHeader("X-File-Size", file.size);
+            xhr.setRequestHeader("X-File-Type", file.type);
+
+            xhr.send(file);
+            filequeueAfterUpload = file.name + ';';
+
+            xhr.onreadystatechange = function () {
+
+                var containtext;
+
+                if (xhr.readyState != 4) {
+                    return;
+                }
+
+                else if (xhr.readyState == 4) {
+
+                    if (xhr.status == 500) {
+
+                        filequeue.push(item);
+
+                        containtext = $(li).find("h3").text();
+                        $(li).find("h3").text(containtext + " upload error");
+                        $(li).find("h3").css("color", "#FF0000");
+                        $(li).find("p").text("Uploading 0%");
+                        $(li).find("p").css("color", "#FF0000");
+
+                    }
+                    else if (xhr.status == 200) {
+
+                        containtext = $(li).find("h3").text();
+                        $(li).find("h3").text(containtext + " upload complete");
+                        $(li).fadeOut(5000);
+                    }
+
+                }
+
+            };
+
+            if (filequeue.length == 0) {
+
+                $('#sizereducechkbox').attr('checked', false);
+                $("#sizereducechkbox").checkboxradio("refresh");
+                $("#sizereducechkbox").fadeOut(100);
+                $("#sizereducechkboxlbl").fadeOut(100);
+
+                chromeCount = 0;
+
+            }
 
         }
-    });
 
-    function checkfile() {
-        var file = getNameFromPath($("#fileToUpload").val());
-        if (file != null) {
-            var extension = file.substr((file.lastIndexOf('.') + 1));
-            // alert(extension);
-            switch (extension) {
-                case 'jpg':
-                    flag = true;
-                    break;
-                case 'png':
-                    flag = true;
-                    break;
-                case 'gif':
-                    flag = true;
-                    break;
-                default:
-                    flag = false;
-            }
-        }
-        if (flag == false) {
-            $("#spanfile").text("You can upload only jpg,png,gif extension file");
-            return false;
-        }
-        else {
-            var size = GetFileSize('fileToUpload');
-            if (size > 2) {
-                $("#spanfile").text("You can upload file up to 2 MB");
-                return false;
-            }
-            else {
-                $("#spanfile").text("");
-            }
+        catch (err) {
+            alert("Exception " + err);
         }
     }
 
-    $(function () {
-        $("#fileToUpload").change(function () {
-            checkfile();
-        });
-    });
-    function submitForm() {
-        var fd = new FormData(document.getElementById("fileinfo"));
-        fd.append("label", "WEBUPLOAD");
-        $.ajax({
-            url: "upload.php",
-            type: "POST",
-            data: fd,
-            enctype: 'multipart/form-data',
-            processData: false,  // tell jQuery not to process the data
-            contentType: false   // tell jQuery not to set contentType
-        }).done(function (data) {
-            console.log("PHP Output:");
-            console.log(data);
-        });
-        return false;
+    //size reduced file upload
+    function resizeAndUpload(file, key, item) {
+
+        try {
+
+            var uploadurl = '@Url.Action("UploadSizeReducedFiles", "FileUpload")';
+            uploadurl += "?bustCache=" + GUID();
+
+            //due to problem occurs while resizing of the image with ios-devices/safari browser
+            var mpImg = new MegaPixImage(file);
+
+            var li = item.li;
+
+            var reader = new FileReader();
+            reader.onloadend = function (evt) {
+
+                if (evt.target.readyState == FileReader.DONE) {
+
+                    var tempImg = new Image();
+                    tempImg.src = reader.result;
+                    tempImg.onload = function () {
+
+                        var MAX_WIDTH = 800;
+                        var MAX_HEIGHT = 600;
+
+                        var tempW = tempImg.width;
+                        var tempH = tempImg.height;
+
+                        if (tempW > MAX_WIDTH) {
+                            tempW = MAX_WIDTH;
+                        }
+
+                        if (tempH > MAX_HEIGHT) {
+                            tempH = MAX_HEIGHT;
+                        }
+
+                        var canvas = document.createElement('canvas');
+                        //render canvas with the use of MegaPixImage library
+                        mpImg.render(canvas, { maxWidth: tempW, maxHeight: tempH });
+
+                        var xhr = new XMLHttpRequest(), upload = xhr.upload;
+
+                        upload.addEventListener("loadstart", function (ev) {
+
+                            var containtext = $(li).find("h3").text();
+                            var index = containtext.indexOf(" upload error");
+
+                            if (index != -1) {
+
+                                var refreshtext = containtext.substring(0, index);
+
+                                $(li).find('h3').text(refreshtext);
+                                //$("#uploadfilelist").listview("refresh");
+
+                            }
+                            else {
+
+                                //$("#uploadfilelist").listview("refresh");
+
+                            }
+
+                        }, false);
+
+                        upload.addEventListener("progress", function (ev) {
+
+                            if (ev.lengthComputable) {
+                                var percentComplete = Math.round(ev.loaded * 100 / ev.total);
+                                $(li).find("p").text("Uploading " + percentComplete + "%");
+                                $(li).find("p").css("color", "#3DD13F");
+                            }
+
+                        }, false);
+                        upload.addEventListener("load", function (ev) {
+
+                            $(li).find("h3").css("color", "#3DD13F");
+
+                        }, false);
+                        upload.addEventListener("error", function (ev) {
+
+                            if (xhr.status != 500) {
+
+                                filequeue.push(item);
+
+                                var containtext = $(li).find("h3").text();
+                                $(li).find("h3").text(containtext + " upload error");
+                                $(li).find("h3").css("color", "#FF0000");
+                                $(li).find("p").text("Uploading 0%");
+                                $(li).find("p").css("color", "#FF0000");
+
+                            }
+
+                        }, false);
+
+                        xhr.open("POST", uploadurl);
+                        xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
+                        xhr.setRequestHeader("X-File-Name", (key + file.name));
+
+                        xhr.setRequestHeader("X-File-Size", file.size);
+                        xhr.setRequestHeader("X-File-Type", file.type);
+
+                        var data = 'image=' + canvas.toDataURL("image/jpeg");
+                        xhr.send(data);
+
+                        xhr.onreadystatechange = function () {
+
+                            var containtext;
+
+                            if (xhr.readyState != 4) {
+                                return;
+                            }
+
+                            else if (xhr.readyState == 4) {
+
+                                if (xhr.status == 500) {
+
+                                    filequeue.push(item);
+
+                                    containtext = $(li).find("h3").text();
+                                    $(li).find("h3").text(containtext + " upload error");
+                                    $(li).find("h3").css("color", "#FF0000");
+                                    $(li).find("p").text("Uploading 0%");
+                                    $(li).find("p").css("color", "#FF0000");
+
+                                }
+                                else if (xhr.status == 200) {
+
+                                    containtext = $(li).find("h3").text();
+                                    $(li).find("h3").text(containtext + " upload complete");
+                                    $(li).fadeOut(5000);
+                                }
+
+                            }
+
+                        };
+
+                        if (filequeue.length == 0) {
+
+                            $('#sizereducechkbox').attr('checked', false);
+                            $("#sizereducechkbox").checkboxradio("refresh");
+                            $("#sizereducechkbox").fadeOut(100);
+                            $("#sizereducechkboxlbl").fadeOut(100);
+
+                            chromeCount = 0;
+
+                        }
+
+                    };
+
+                };
+
+            };
+            reader.readAsDataURL(file);
+        }
+
+        catch (err) {
+            alert("Exception " + err);
+        }
     }
 
-    $("#uploadEditorImage").change(function () {
-        var data = new FormData();
-        var files = $("#uploadEditorImage").get(0).files;
-        if (files.length > 0) {
-            data.append("HelpSectionImages", files[0]);
-        }
-        $.ajax({
-            url: resolveUrl("~/Admin/HelpSection/AddTextEditorImage/"),
-            type: "POST",
-            processData: false,
-            contentType: false,
-            data: data,
-            success: function (response) {
-                //code after success
+    //display error information
+    function errorDisplay(error) {
+        $("#perror").text(error).fadeOut(4000);
+    }
+    function UploadSelectedFiles()
+    {
+        try {
+            
+            while (filequeue.length > 0) {
 
-            },
-            error: function (er) {
-                alert(er);
+                var item = filequeue.pop();
+                var processarray = item.file;
+                var file = processarray[0];
+                var key = processarray[1];
+
+                if ($('#sizereducechkbox').is(':checked')) {
+                    resizeAndUpload(file, key);
+                }
+                else {
+                    upload(file, key, item);
+                }
             }
+            if (filequeue.length == 0)
+                document.getElementById("ImagePaths").value = document.getElementById("ImagePaths").value + filequeueAfterUpload;
 
-        });
-    });
+        } catch (err) {
+            alert("Exception " + err);
+        }
+    }
+
 </script>
-
 
 <fieldset>
     <legend>Product Basic Information</legend>
@@ -161,6 +556,17 @@
             </td>
         </tr>
 
+
+        <tr>
+            <td>
+                Vendor
+            </td>
+
+            <td>
+                @Html.DropDownList("VendorId", new SelectList(ViewBag.Vendors, "Value", "Text", @Model.VendorId))
+                @Html.ValidationMessageFor(model => model.VendorId)
+            </td>
+        </tr>
         <tr>
             <td>
                 @Html.LabelFor(model => model.UnitPrice)
@@ -247,8 +653,29 @@
 </fieldset>
 <fieldset>
     <legend>Images</legend>
-    <input type="file" id="uploadEditorImage" />
-
+    <div>
+        <div>
+            <p id="perror" style="color: white; background-color: red;"></p>
+        </div>
+        <div>
+            <input type="file" accept="image/*" name="fileToUpload[]" id="fileToUpload" style='visibility: hidden;' name="img" onchange="fileSelected();" />
+            <input type="button" value="Choose image" onclick="javascript:document.getElementById('fileToUpload').click();">
+            <ul data-role="listview" id="uploadfilelist" data-inset="true" data-split-theme="d" data-split-icon="delete"></ul>
+        </div>
+        <div>
+            <ul data-role="listview" data-inset="true">
+                <li data-role="fieldcontain">
+                    @*<label id="sizereducechkboxlbl" style="display: none">
+        <input type="checkbox" name="checkbox-0" id="sizereducechkbox" style="display: none" /> Reduce size and upload
+    </label>
+        <input type="button" name="UploadFiles" id="UploadFiles" onclick="UploadFiles();" value="Upload [max. 5 files]" />*@
+                    
+                </li>
+                @Html.TextBox("ImagePaths", "", new { @readonly = "readonly" })
+            </ul>
+        </div>
+        <input type="button" value="Upload [max. 5 files]" onclick="UploadSelectedFiles();" />
+    </div>
 </fieldset>
 
 

@@ -195,5 +195,7 @@ namespace EC.Model
         public int StaticItemDetId { get; set; }
 
         public virtual List<StaticItemDet> StaticItemDets { get; set; }
+        [NotMapped]
+        public string ImagePaths { get; set; }
     }
 }
