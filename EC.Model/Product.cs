@@ -48,7 +48,11 @@ namespace EC.Model
         /// <summary>
         /// Gets or sets a vendor identifier
         /// </summary>
+<<<<<<< HEAD
         [Display(Name = "Vendor Name")]
+=======
+        [Display(Name="Vendor Name")]
+>>>>>>> c18da64b9c984434999b17336f05b0317cc40bb7
         public int? VendorId { get; set; }
         [ForeignKey("VendorId")]
         public Vendor Vendor { get; set; }
