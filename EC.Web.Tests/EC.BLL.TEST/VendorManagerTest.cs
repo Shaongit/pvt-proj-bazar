@@ -26,18 +26,20 @@ namespace EC.Web.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        //GetSingleVendor
-        //public void GetSingleVendor()
+        //delete vendor
+        //[TestMethod]
+        //public void RemoveVendorTest()
         //{
         //    // Arrange
-        //    VendorsController VendorController = new VendorsController();
+        //    VendorManager VendorManager = new VendorManager();
 
+            
         //    // Act
-        //    ViewResult result = VendorController.Details() as ViewResult;
+        //     VendorManager.RemoveVendor(1);
 
         //    // Assert
-        //    Assert.IsNotNull(result);
-        //}
+        //     Assert.IsFalse();
+        //}  
 
         [TestMethod]
         public void GetSingleVendorTest()
