@@ -64,6 +64,7 @@
     <Compile Include="GiftCardType.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="Picture.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="ProductImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
