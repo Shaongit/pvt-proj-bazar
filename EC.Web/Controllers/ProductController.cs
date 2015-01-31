@@ -15,16 +15,24 @@ namespace EC.Web.Controllers
     public class ProductController : Controller
     {
         IProductManager objIProdMgr = new ProductManager();
+        UserManager objUserManager = new UserManager();
+        WishItemManager objWishItemManager = new WishItemManager();
+
         string pFolderDir = "~/Images/Products";
         //
         // GET: /Product/
 
+        public ProductController()
+        {
+            
+        }
         public ActionResult Index()
         {
             return View(objIProdMgr.GetAllProducts());
         }
         public ActionResult CategoryWiseProducts(int categoryId)
         {
+            this.SetBaseData();
             ViewBag.CategoryId = categoryId;
             return View(objIProdMgr.GetAllProducts().Where(p=>p.CategoryId == categoryId));
         }
@@ -297,6 +305,26 @@ namespace EC.Web.Controllers
                 Response.StatusCode = 500;
                 return Json(fileName + " fail", JsonRequestBehavior.AllowGet);
             }
+        }
+
+
+        public void SetBaseData()
+        {
+            List<WishItem> lstWishItem = new List<WishItem>();
+
+            if (!String.IsNullOrEmpty(User.Identity.Name))
+            {
+                try
+                {
+                    int userId = objUserManager.GetUser(User.Identity.Name).UserId;
+                    lstWishItem = objWishItemManager.GetUserWishItems(userId);
+                }
+                catch
+                {
+                }
+            }
+
+            ViewBag.UserWishList = lstWishItem;
         }
     }
 }

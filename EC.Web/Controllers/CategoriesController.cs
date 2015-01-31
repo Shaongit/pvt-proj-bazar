@@ -18,6 +18,8 @@ namespace EC.Web.Controllers
 
         ICategoryManager objCategoryManager = new CategoryManager();
         private ECommerceContext context = new ECommerceContext();
+        UserManager objUserManager = new UserManager();
+        WishItemManager objWishItemManager = new WishItemManager();
 
         //
         // GET: /Categories/
@@ -104,6 +106,25 @@ namespace EC.Web.Controllers
             context.Categories.Remove(category);
             context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public void SetBaseData()
+        {
+            List<WishItem> lstWishItem = new List<WishItem>();
+
+            if (!String.IsNullOrEmpty(User.Identity.Name))
+            {
+                try
+                {
+                    int userId = objUserManager.GetUser(User.Identity.Name).UserId;
+                    lstWishItem = objWishItemManager.GetUserWishItems(userId);
+                }
+                catch
+                {
+                }
+            }
+
+            ViewBag.UserWishList = lstWishItem;
         }
 
         protected override void Dispose(bool disposing)
