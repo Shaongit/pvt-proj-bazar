@@ -1,6 +1,8 @@
 ﻿using EC.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections
+;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -47,7 +49,6 @@ namespace EC.Model
         public int? VendorId { get; set; }
         [ForeignKey("VendorId")]
         public Vendor Vendor { get; set; }
-        public virtual ICollection<Vendor> Vendors { get; set; }
 
 
         /// <summary>
@@ -197,5 +198,6 @@ namespace EC.Model
         public virtual List<StaticItemDet> StaticItemDets { get; set; }
         [NotMapped]
         public string ImagePaths { get; set; }
+
     }
 }

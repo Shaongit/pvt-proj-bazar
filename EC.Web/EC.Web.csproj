@@ -354,6 +354,8 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\_CreateOrEdit.cshtml" />
     <Content Include="Views\Account\ManageProfile.cshtml" />
+    <Content Include="Views\Product\CategoryWiseProducts.cshtml" />
+    <Content Include="Views\Product\CreateCategorywiseProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
