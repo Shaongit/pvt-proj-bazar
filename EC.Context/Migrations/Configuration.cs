@@ -71,6 +71,9 @@ namespace EC.Context.Migrations
                 new StaticItemDet { StaticItemId = 2, ItemValue = 3, ItemText = "Price Low To High" }
                 );
 
+            context.Products.AddOrUpdate(
+                p => p.Name,
+                new Product { Name="Walton", CategoryId =2, ShortDescription = "NA", FullDescription = "NA", VendorId = 1, ShowOnHomePage = false, AllowCustomerReviews=false, IsGiftCard = false, IsShipEnabled = false, IsFreeShipping = true, IsActive = true, ShipSeparately =false, StockQuantity = 2, DisplayStockAvailability = false, DisplayStockQuantity = false, UnitPrice = 100, OldPrice = 0, SpecialPrice = 0, HasDiscountsApplied = false, BookQty = 0, LockQty =0, Published = true, Deleted = false, CreatedDate = DateTime.Now, UserId = 1, StaticItemDetId = 1});
             //context.UserProfiles.
             //WebSecurity.CreateUserAndAccount("mahedee", "leads@123");
 

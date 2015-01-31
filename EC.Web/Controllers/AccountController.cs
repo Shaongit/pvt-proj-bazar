@@ -21,7 +21,7 @@ namespace EC.Web.Controllers
 
     [Authorize]
     [InitializeSimpleMembership]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
 
         IUserManager objIUserManager = new UserManager();

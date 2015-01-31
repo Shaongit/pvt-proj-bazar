@@ -1,0 +1,53 @@
+@model IEnumerable<EC.Model.WishItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            Product
+        </th>
+        <th>
+            UserProfile
+        </th>
+        <th>
+            CreatedDate
+        </th>
+        <th>
+            UpdatedDate
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+        <td>
+			@(item.Product == null ? "None" : item.Product.Name)
+        </td>
+        <td>
+			@Html.DisplayTextFor(_ => item.UserProfile).ToString()
+        </td>
+        <td>
+			@String.Format("{0:g}", item.CreatedDate)
+        </td>
+        <td>
+			@String.Format("{0:g}", item.UpdatedDate)
+        </td>
+    </tr>
+}
+
+</table>
+
+

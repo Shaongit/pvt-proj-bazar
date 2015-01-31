@@ -167,6 +167,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -179,6 +180,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\VendorsController.cs" />
+    <Compile Include="Controllers\WishItemsController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -318,10 +320,26 @@
     <Content Include="Content\bootstrap.css.map" />
     <None Include="bin\EC.Web.dll.config" />
     <None Include="Properties\PublishProfiles\CWMVC.pubxml" />
+    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\accent.png" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\banner1.jpg" />
+    <Content Include="Images\banner2.jpg" />
     <Content Include="Images\bannerAdmin.jpg" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\noimage - Copy.png" />
+    <Content Include="Images\noimage.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -360,6 +378,13 @@
     <Content Include="Views\Countries\Index.cshtml" />
     <Content Include="Views\Countries\_CreateOrEdit.cshtml" />
     <Content Include="Views\Countries\_ViewStart.cshtml" />
+    <Content Include="Views\Product\CreateCategorywiseProduct.cshtml" />
+    <Content Include="Views\WishItems\Create.cshtml" />
+    <Content Include="Views\WishItems\Delete.cshtml" />
+    <Content Include="Views\WishItems\Details.cshtml" />
+    <Content Include="Views\WishItems\Edit.cshtml" />
+    <Content Include="Views\WishItems\Index.cshtml" />
+    <Content Include="Views\WishItems\_CreateOrEdit.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -371,19 +396,6 @@
     </Content>
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Images\accent.png" />
-    <Content Include="Images\bullet.png" />
-    <Content Include="Images\heroAccent.png" />
-    <Content Include="Images\orderedList0.png" />
-    <Content Include="Images\orderedList1.png" />
-    <Content Include="Images\orderedList2.png" />
-    <Content Include="Images\orderedList3.png" />
-    <Content Include="Images\orderedList4.png" />
-    <Content Include="Images\orderedList5.png" />
-    <Content Include="Images\orderedList6.png" />
-    <Content Include="Images\orderedList7.png" />
-    <Content Include="Images\orderedList8.png" />
-    <Content Include="Images\orderedList9.png" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -416,7 +428,6 @@
     <Content Include="Views\Product\_CreateOrEdit.cshtml" />
     <Content Include="Views\Account\ManageProfile.cshtml" />
     <Content Include="Views\Product\CategoryWiseProducts.cshtml" />
-    <Content Include="Views\Product\CreateCategorywiseProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

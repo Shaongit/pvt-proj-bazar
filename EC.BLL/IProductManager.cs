@@ -14,5 +14,6 @@ namespace EC.BLL
         Product GetSingleProduct(int id);
         void EditProduct(Product Product);
         void RemoveProduct(int id);
+        List<Product> GetRecentTenProducts();
     }
 }

@@ -1,3 +1,19 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<div>
+    @foreach (var product in (IEnumerable<EC.Model.Product>)ViewBag.RecentProduct)
+    {
+        <div class="grid-product">
+            @if(product.ProductImages.Count() > 0 && product.ProductImages.FirstOrDefault().ImagePath != null)
+            {
+                <img src=@product.ProductImages.FirstOrDefault().ImagePath alt="" title="" />
+            }
+            else
+            {
+                <img src="~/Images/noimage.png" alt="" title="" />
+            }
+            @Html.ActionLink("Add to wishlist", "AddWishList", "WishItems", new { productId = product.Id},null)
+            <br />
+            @Html.ActionLink("Add to cart","Create","Carts")
+        </div>
+    }
+
+</div>

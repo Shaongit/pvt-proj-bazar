@@ -24,7 +24,7 @@
 
                     <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                     <text>
-                    ||
+                    ||  
                     </text>
 
                 }
@@ -37,7 +37,7 @@
                 }
                 @Html.ActionLink("ShoppingCart()", "Register", "Account")
                 ||
-                @Html.ActionLink("Wishlist()", "Register", "Account")
+                @Html.ActionLink("Wishlist(" + ((List<EC.Model.WishItem>)ViewBag.UserWishList).Count() + ")", "Index", "WishItems")
             </p>
             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
             {

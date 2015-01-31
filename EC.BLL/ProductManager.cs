@@ -28,6 +28,13 @@ namespace EC.BLL
             return repository.SelectAll().ToList();
         }
 
+        public List<Product> GetRecentTenProducts()
+        {
+            List<Product> lstProduct = new List<Product>();
+            lstProduct = repository.SelectAll().OrderByDescending(p => p.Id).Take(10).ToList();
+            return lstProduct;
+        }
+
         public Product GetSingleProduct(int id)
         {
             return repository.SelectByID(id);
