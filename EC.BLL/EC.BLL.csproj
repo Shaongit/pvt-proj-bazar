@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,7 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryManager.cs" />
+    <Compile Include="CityManager.cs" />
+    <Compile Include="CountryManager.cs" />
+    <Compile Include="ICategoryManager.cs" />
+    <Compile Include="ICityManager.cs" />
     <Compile Include="IProductManager.cs" />
+    <Compile Include="IUserManager.cs" />
+    <Compile Include="ICountryManager.cs" />
     <Compile Include="IVendorManager.cs" />
     <Compile Include="ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,6 +69,9 @@
       <Project>{243366a4-d760-4bce-8296-37cd2c3980a1}</Project>
       <Name>EC.Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

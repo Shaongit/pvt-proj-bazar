@@ -15,12 +15,19 @@ namespace EC.Model.Entities
         public int UserId { get; set; }
         public string UserName { get; set; }
 
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
+        public string FullName { get; set; }       
 
         public string Email { get; set; }
-        public string NewProp { get; set; }
+
+        public string MobNumber { get; set; }
+
+        public int? CountryId { get; set; }
+        [ForeignKey("CountryId")]
+        public virtual Country Country { get; set; }
+        public int? CityId { get; set; }
+
+        [ForeignKey("CityId")]
+        public virtual City City { get; set; }
 
     }
 

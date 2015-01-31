@@ -35,6 +35,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -93,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EC.BLL.TEST\VendorManagerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -103,10 +107,41 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EC.BLL\EC.BLL.csproj">
+      <Project>{8124933a-d00b-4d45-aef5-02433ee2056a}</Project>
+      <Name>EC.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EC.Context\EC.Context.csproj">
+      <Project>{1d77493d-0f46-4b8f-beeb-c022966c1d92}</Project>
+      <Name>EC.Context</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EC.Factory\EC.Factory.csproj">
+      <Project>{8f431b00-6c4f-4cc6-8df6-a00318d1c586}</Project>
+      <Name>EC.Factory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EC.Model\EC.Model.csproj">
+      <Project>{75bb24d9-d566-460f-a89b-4ead66b44a23}</Project>
+      <Name>EC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EC.Repository\EC.Repository.csproj">
+      <Project>{243366a4-d760-4bce-8296-37cd2c3980a1}</Project>
+      <Name>EC.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EC.Security\EC.Security.csproj">
+      <Project>{99f8a3ad-b370-49b7-b5f2-a620e9d2a5b8}</Project>
+      <Name>EC.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EC.Utility\EC.Utility.csproj">
+      <Project>{723f86fc-2bcd-41d7-87de-e72d3f63b92e}</Project>
+      <Name>EC.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EC.Web\EC.Web.csproj">
       <Project>{F5C528AE-ED8B-4098-9016-F4CD120CBF7E}</Project>
       <Name>EC.Web</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EC.BLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

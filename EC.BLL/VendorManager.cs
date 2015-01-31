@@ -10,7 +10,7 @@ namespace EC.BLL
 {
     public class VendorManager : IVendorManager
     {
-       // private UnitOfWork unitOfWork = new UnitOfWork();
+       // private UnitOfWork unitOfWork = new UnitOfWork();D:\Mahedee\CW-Project\EC.BLL\VendorManager.cs
 
         private IGenericRepository<Vendor> repository = null;
 

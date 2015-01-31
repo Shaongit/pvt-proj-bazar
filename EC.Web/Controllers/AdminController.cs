@@ -7,7 +7,7 @@ using System.Web.Security;
 
 namespace EC.Web.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AdminController : Controller
     {
         //
@@ -23,7 +23,7 @@ namespace EC.Web.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            return View(); 
         }
 
         //

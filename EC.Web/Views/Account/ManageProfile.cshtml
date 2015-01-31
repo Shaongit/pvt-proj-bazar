@@ -1,0 +1,96 @@
+﻿@model EC.Model.Entities.UserProfile
+
+@{
+    ViewBag.Title = "ManageProfile";
+}
+
+<h2>ManageProfile</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User Profile</legend>
+        @Html.HiddenFor(model => model.UserId)
+        @Html.HiddenFor(model => model.UserName)
+
+        <table class="table">
+
+
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.FullName)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.FullName)
+                    @Html.ValidationMessageFor(model => model.FullName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Email)
+                    @Html.ValidationMessageFor(model => model.Email)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.MobNumber)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.MobNumber)
+                    @Html.ValidationMessageFor(model => model.MobNumber)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Country
+                </td>
+                <td>
+
+                    @Html.DropDownListFor(model => model.CountryId, ((IEnumerable<EC.Model.Country>)ViewBag.PossibleCountries).Select(option => new SelectListItem
+                    {
+                        Text = (option == null ? "None" : option.Name),
+                        Value = option.Id.ToString(),
+                        Selected = (Model != null) && (option.Id == Model.CountryId)
+                    }), "Choose...")
+                    @Html.ValidationMessageFor(model => model.CountryId)
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>City
+                </td>
+                <td>
+
+                    @Html.DropDownListFor(model => model.CityId, ((IEnumerable<EC.Model.City>)ViewBag.PossibleCities).Select(option => new SelectListItem
+                    {
+                        Text = (option == null ? "None" : option.Name),
+                        Value = option.Id.ToString(),
+                        Selected = (Model != null) && (option.Id == Model.CityId)
+                    }), "Choose...")
+                    @Html.ValidationMessageFor(model => model.CityId)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+                <td></td>
+            </tr>
+
+        </table>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

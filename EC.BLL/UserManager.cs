@@ -9,19 +9,50 @@ using System.Threading.Tasks;
 
 namespace EC.BLL
 {
-    public class UserManager
+    public class UserManager : IUserManager
     {
-        private SecurityRepository repository = null;
+        private SecurityRepository securityRepository = null;
+        
+         private IGenericRepository<UserProfile> repository = null;
+
 
         public UserManager()
         {
-            this.repository = new SecurityRepository();
+            this.repository = new GenericRepository<UserProfile>();
+            this.securityRepository = new SecurityRepository();
         }
 
 
         public UserProfile GetUser(string username)
         {
-            return repository.GetUser(username);
+            return securityRepository.GetUser(username);
+        }
+
+
+        public void AddUser(UserProfile user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserProfile> GetAllUsers()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserProfile GetSingleUser(int id)
+        {
+            return repository.SelectByID(id);
+        }
+
+        public void EditUser(UserProfile user)
+        {
+            repository.Update(user);
+            repository.Save();
+        }
+
+        public void RemoveUser(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
